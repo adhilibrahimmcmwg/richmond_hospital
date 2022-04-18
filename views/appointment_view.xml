@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <!--    confirm button in action-->
+    <record id="action_appointment_confirm_button" model="ir.actions.server">
+        <field name="name">Confirm Appointment</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_patient_appointment"/>
+        <field name="binding_model_id" ref="model_patient_appointment"/>
+        <field name="state">code</field>
+        <field name="code">records.action_confirm()</field>
+    </record>
+
+    <record id="appointment_view_tree" model="ir.ui.view">
+        <field name="name">Appointment_view_tree</field>
+        <field name="model">patient.appointment</field>
+        <field name="arch" type="xml">
+            <tree multi_edit="1">
+                <header>
+                    <button name="action_done" string="Mark As Done" class="btn-primary" type="object"/>
+                </header>
+                <field name="reference" readonly="1" optional="show"/>
+                <field name="doctor_id"/>
+                <field name="patient_id" optional="show"/>
+                <field name="gender" optional="show"/>
+                <field name="age" optional="show"/>
+                <field name="date_checkup" optional="hide"/>
+                <field name="note" optional="show"/>
+                <field name="state" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="appointment_view_form" model="ir.ui.view">
+        <field name="name">Appointment_view_form</field>
+        <field name="model">patient.appointment</field>
+        <field name="arch" type="xml">
+            <form string="patient_form">
+                <header>
+                    <button id="button_confirm" name="action_confirm" string="Confirm" class="btn-primary"
+                            states="draft"
+                            confirm="Are you sure that you need to Confirm?"
+                            type="object"/>
+                    <button id="button_done" name="action_done" string="Mark As Done" class="btn-primary"
+                            states="confirm"
+                            type="object"/>
+                    <button id="button_draft" name="action_draft" string="Set To Draft" class="btn-primary"
+                            states="cancel"
+                            type="object"/>
+                    <button id="button_cancel" name="action_cancel" string="Cancel" states="draft,done,confirm"
+                            type="object"/>
+                    <button name="action_url" string="Open URL" class="btn-primary"
+                            type="object"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,done,confirm"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="reference" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="patient_id"/>
+                            <field name="patient_name_id" context="{'hide_code': True}"/>
+                            <field name="name"/>
+                            <field name="gender" readonly="1" force_save="1"/>
+                            <field name="age"/>
+                        </group>
+                        <group>
+                            <field name="doctor_id" options="{'no_create': True}"/>
+                            <field name="date_checkup"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Doctor Prescription" name="doctor_prescription">
+                            <group>
+                                <field name="prescription"/>
+                            </group>
+                        </page>
+                        <page string="Medicine" name="medicine">
+                            <field name="prescription_line_ids">
+                                <tree editable="bottom">
+                                    <field name="medicine"/>
+                                    <field name="quantity"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="medicine" required="True"/>
+                                        <field name="quantity"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Other Info" name="other_info">
+                            <group>
+                                <field name="note"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="appointment_search" model="ir.ui.view">
+        <field name="name">appointment.patient.search</field>
+        <field name="model">patient.appointment</field>
+        <field name="arch" type="xml">
+            <search string="Patients">
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="note"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient Name" name="patient_id" context="{'group_by':'patient_id'}"/>
+                </group>
+                <searchpanel>
+                    <field name="gender" string="Gender" icon="fa-exchange"/>
+                    <field name="state" string="Status" select="multi" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record id="appointment_hospital_action" model="ir.actions.act_window">
+        <field name="name">Appointment</field>
+        <field name="res_model">patient.appointment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_name': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a New Appointment
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="appointment_patient_root"
+            name="Appointment"
+            sequence="20"
+            parent="menu_hospital_root"/>
+
+
+    <menuitem
+            id="appointment_patient"
+            name="Appointments"
+            sequence="10"
+            action="appointment_hospital_action"
+            parent="appointment_patient_root"/>
+
+    <menuitem
+            id="appointment_Wizard"
+            name="Create Appointment"
+            sequence="20"
+            action="appointment_wizard_action"
+            parent="appointment_patient_root"/>
+
+    <menuitem
+            id="search_appointment_Wizard"
+            name="Search Appointment"
+            sequence="30"
+            action="search_appointment_action"
+            parent="appointment_patient_root"/>
+
+</odoo>

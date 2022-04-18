@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="appointment_wizard_view_form" model="ir.ui.view">
+        <field name="name">Appointment.Wizard.View.form</field>
+        <field name="model">appointment.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Create a New Appointment">
+                <group>
+                    <field name="date"/>
+                    <field name="patient_id"/>
+                </group>
+                <group>
+                    <field name="doctor_id"/>
+                </group>
+                <footer>
+                    <button name="action_create_appointment" type="object" string="Create" class="btn-primary"/>
+                    <!--                    <button name="action_view_appointment" type="object" string="View Appointment" class="btn-primary"/>-->
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="appointment_wizard_action" model="ir.actions.act_window">
+        <field name="name">Appointment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">appointment.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="appointment_wizard_view_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

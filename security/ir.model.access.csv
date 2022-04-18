@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hospital_patient_user,richmond_hospital.hospital.patient,model_hospital_patient,base.group_user,1,1,1,1
+access_patient_appointment_user,richmond_hospital.patient.appointment,model_patient_appointment,base.group_user,1,1,1,1
+access_appointment_wizard_user,richmond_hospital.appointment.wizard,model_appointment_wizard,base.group_user,1,1,1,1
+access_search_appointment_wizard_user,richmond_hospital.search.appointment.wizard,model_search_appointment_wizard,base.group_user,1,1,1,1
+access_doctors_hospital_user,richmond_hospital.doctors.hospital,model_doctors_hospital,base.group_user,1,1,1,1
+access_appointment_prescription_lines_user,richmond_hospital.appointment.prescription.lines,model_appointment_prescription_lines,base.group_user,1,1,1,1
+access_appointment_report_wizard_user,richmond_hospital.appointment.report.wizard,model_appointment_report_wizard,base.group_user,1,1,1,1
+access_patient_report_wizard_user,richmond_hospital.patient.report.wizard,model_patient_report_wizard,base.group_user,1,1,1,1
