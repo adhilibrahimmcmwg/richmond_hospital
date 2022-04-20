@@ -10,7 +10,6 @@ class AppointmentReportWizard(models.TransientModel):
     date_to = fields.Date(string="Date To")
 
     def action_print_excel_report(self):
-
         domain = []
 
         patient_id = self.patient_id
