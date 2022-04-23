@@ -8,3 +8,4 @@ access_appointment_prescription_lines_user,richmond_hospital.appointment.prescri
 access_appointment_report_wizard_user,richmond_hospital.appointment.report.wizard,model_appointment_report_wizard,base.group_user,1,1,1,1
 access_patient_report_wizard_user,richmond_hospital.patient.report.wizard,model_patient_report_wizard,base.group_user,1,1,1,1
 access_nurse_hospital_user,richmond_hospital.nurse.hospital,model_nurse_hospital,base.group_user,1,1,1,1
+access_hospital_lab_user,richmond_hospital.hospital.lab,model_hospital_lab,base.group_user,1,1,1,1
