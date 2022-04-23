@@ -206,10 +206,11 @@
             action="action_report_appointment"
             sequence="30"/>
 
-     <menuitem
+    <menuitem
             id="menu_patient_report"
             name="Patients"
             parent="menu_reporting"
             action="action_report_patient"
             sequence="40"/>
+
 </odoo>
