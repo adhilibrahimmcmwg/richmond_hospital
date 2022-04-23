@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="lab_tree" model="ir.ui.view">
+        <field name="name">lab_tree</field>
+        <field name="model">hospital.lab</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="name"/>
+                <field name="age"/>
+                <field name="gender"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_lab_kanban" model="ir.ui.view">
+        <field name="name">lab</field>
+        <field name="model">hospital.lab</field>
+        <field name="arch" type="xml">
+            <kanban sample="1">
+                <field name="name"/>
+                <field name="age"/>
+                <field name="gender"/>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="lab_view_form" model="ir.ui.view">
+        <field name="name">lab_view_form</field>
+        <field name="model">hospital.lab</field>
+        <field name="arch" type="xml">
+            <form string="Laboratory">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="age"/>
+                        <field name="gender"/>
+                    </group>
+                    <group>
+                        <field name="test_type"/>
+                        <field name="note"/>
+                        <field name="number"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="lab_hospital_action" model="ir.actions.act_window">
+        <field name="name">Lab</field>
+        <field name="res_model">hospital.lab</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Laboratory
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="hospital_lab_root"
+            name="Lab"
+            parent="menu_hospital_root"
+            sequence="50"/>
+
+
+    <menuitem
+            id="hospital_lab"
+            name="Covid Test"
+            action="lab_hospital_action"
+            parent="hospital_lab_root"
+            sequence="10"/>
+</odoo>
