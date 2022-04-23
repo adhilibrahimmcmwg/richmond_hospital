@@ -49,11 +49,11 @@
    </record>
 
    <record id="action_patient_appointment_xlsx" model="ir.actions.report">
-      <field name="name">Patient Appointment Excel</field>
+      <field name="name">Patient Appointment xlxx report</field>
       <field name="model">appointment.report.wizard</field>
       <field name="report_type">xlsx</field>
       <field name="report_name">richmond_hospital.report_patient_appointment_xls</field>
-      <field name="report_file">richmond_hospital:report_patient_appointment_xls</field>
+      <field name="report_file">richmond_hospital:report_patient_appointment_Xls</field>
 <!--      <field name="binding_model_id" ref="model_hospital_patient"/>-->
    </record>
 
