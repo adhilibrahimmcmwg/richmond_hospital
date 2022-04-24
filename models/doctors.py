@@ -17,6 +17,14 @@ class HospitalPatient(models.Model):
     note = fields.Text(string='Description')
     image = fields.Binary(string="Patient Image")
     active = fields.Boolean(string="Active", default=True)
+    name = fields.Char(string="Name")
+    doctor_id = fields.Many2one('doctors.hospital', string="Doctor")
+    nurse_id = fields.Many2one('nurse.hospital', string="Nurse")
+    test_type = fields.Selection(
+        string='Test Type',
+        selection=[('antigen', 'Antigen'), ('rtpcr', 'RTPCR')]
+    )
+    appointment_ids = fields.One2many('patient.appointment', 'doctor_id', string='Appointments')
 
 # overriding of copy function
     def copy(self, default=None):
