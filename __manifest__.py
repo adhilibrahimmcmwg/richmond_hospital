@@ -28,6 +28,7 @@
         "views/doctors.xml",
         "views/nurse.xml",
         "views/lab.xml",
+        "views/surgery.xml",
         "report/patient_details.xml",
         "report/patient_card.xml",
         "report/report.xml",

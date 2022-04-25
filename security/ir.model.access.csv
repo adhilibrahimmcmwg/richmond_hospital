@@ -9,3 +9,4 @@ access_appointment_report_wizard_user,richmond_hospital.appointment.report.wizar
 access_patient_report_wizard_user,richmond_hospital.patient.report.wizard,model_patient_report_wizard,base.group_user,1,1,1,1
 access_nurse_hospital_user,richmond_hospital.nurse.hospital,model_nurse_hospital,base.group_user,1,1,1,1
 access_hospital_lab_user,richmond_hospital.hospital.lab,model_hospital_lab,base.group_user,1,1,1,1
+access_hospital_surgery_user,richmond_hospital.hospital.surgery,model_hospital_surgery,base.group_user,1,1,1,1
